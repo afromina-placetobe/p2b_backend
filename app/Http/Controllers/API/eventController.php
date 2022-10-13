@@ -13,9 +13,12 @@ class eventController extends Controller
     public function addEvent(Request $request)
     {
         $event = new Event;
+        $file= $request->file('event_image');
+        $filename= date('YmdHi').$file->getClientOriginalName();
+        $file-> move(public_path('assets/'), $filename);
         $event->event_status = $request->event_status;
         $event->userId = $request->userId;
-        $event->event_image = $request ->event_image;
+        $event->event_image = $filename;
         $event->event_name = $request->event_name;
         $event->event_description = $request->event_description;
         $event->start_date = $request->start_date;
@@ -42,7 +45,8 @@ class eventController extends Controller
     {
         $id=$request->event_id;
         // $event = DB::table('events')->where('event_id', $request->event_id)->get();
-        $event = Event::where('event_id','=',$id)->first();
+        $event = Event::where('event_id','=',$id)->firstOrFail();
+        // return $event;
         $event->event_status = $request->event_status;
         $event->event_image = $request ->event_image;
         $event->event_name = $request->event_name;

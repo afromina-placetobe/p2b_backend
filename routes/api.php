@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\eventController;
 use App\Http\Controllers\API\userController;
 use App\Http\Controllers\API\followController;
+use App\Http\Controllers\API\AuthController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,6 +16,11 @@ use App\Http\Controllers\API\followController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('register', [AuthController::class,'register']);
+Route::post('login', [AuthController::class,'login']);
+Route::post('logout', [AuthController::class,'logout']);
+
+
 Route::post('addEvent', [eventController::class,'addEvent']);
 Route::put('editEvent', [eventController::class,'editEvent']);
 Route::delete('deleteEvent', [eventController::class,'deleteEvent']);

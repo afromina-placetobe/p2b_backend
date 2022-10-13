@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->increments('event_id',15);
             $table->integer('event_status');
-            $table->integer('userId');
+            $table->unsignedInteger('userId');
             $table->foreign('userId') ->references('userId')->on('users')->onDelete('cascade');
             $table->string('event_image')->nullable();
             $table->string('event_name')->nullable();

@@ -4,16 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
-class Follow extends Model
+use Laravel\Sanctum\HasApiTokens;
+class Admin extends Model
 {
+    use HasApiTokens;
     use HasFactory;
     public $timestamps=false;
-    protected $primaryKey = 'follow_id';
-    protected $table = 'follow';
+    protected $table = 'administrator';
     protected $fillable = [
-        'follow_id',
-        'follower_id',
-        'followed_id'
+        'email',
+        'password'
     ];
 }
