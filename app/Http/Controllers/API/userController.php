@@ -84,4 +84,13 @@ class userController extends Controller
             'status'=>200
         ]);
     }
+
+    public function showUsername(Request $request) {
+        $user = User::get(['username']);
+        // $username = $user->username;
+        return response()->json([
+            'user'=>$user,
+            'status'=>200
+        ]);
+    }
 }

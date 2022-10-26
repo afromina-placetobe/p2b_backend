@@ -190,4 +190,17 @@ class eventController extends Controller
             'event'=>$event
             ]);
     }
+
+    public function ongoingEvent(Request $request)
+    {
+        $today = Carbon::now();
+        $event = Event::where('start_date','<=',$today)
+        ->where('end_date','>=',$today)
+        ->where('event_status','=',1)->get();
+
+        return response()->json([
+            'status'=>200,
+            'event'=>$event
+            ]);
+    }
 }

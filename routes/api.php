@@ -32,6 +32,7 @@ Route::get('upcomingEvent', [eventController::class,'upcomingEvent']);
 Route::get('expiredEvent', [eventController::class,'expiredEvent']);
 Route::get('latestEvent', [eventController::class,'latestEvent']);
 Route::put('publishEvent', [eventController::class,'publishEvent']);
+Route::get('ongoingEvent', [eventController::class,'ongoingEvent']);
 
 Route::post('addFollow', [followController::class,'addFollow']);
 Route::put('editFollow', [followController::class,'editFollow']);
@@ -43,6 +44,7 @@ Route::put('editUser', [userController::class,'editUser']);
 Route::delete('deleteUser', [userController::class,'deleteUser']);
 Route::get('showSingleUser', [userController::class,'showSingleUser']);
 Route::get('showUser', [userController::class,'showUser']);
+Route::get('showUsername', [userController::class,'showUsername']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
